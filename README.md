@@ -25,7 +25,9 @@ angular.module('yourProject', ['ngLoadableContent']);
 ```
 - inject the $loader service in your controller 
 ```js
-yourProject.controller('YourController', ['$loader', '$http', function ($loader, $http) { /*your methods*/ }]);
+yourProject.controller('YourController', ['$loader', '$http', function ($loader, $http) {
+/*your methods*/
+}]);
 ```
 - call the $loader service on the element you want to show
 ```js
