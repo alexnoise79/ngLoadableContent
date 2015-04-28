@@ -49,3 +49,8 @@ $loader.spinElement(loadable-id);
 Example
 ---------
 TO be defined
+
+
+More About spin.js
+----------
+http://fgnass.github.io/spin.js/
