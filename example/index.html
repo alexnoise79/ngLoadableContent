@@ -1,0 +1,37 @@
+<!DOCTYPE html ng-app="app">
+<!--[if lt IE 7]><html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ngLoadable Content Demo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css"/>-->
+    <link rel="stylesheet" href="app.css">
+</head>
+<body ng-loadable="body" overlay="true" options="{color:'#f60',radius:12}">
+
+<main ng-controller="PageController as page">
+
+    <div class="box" ng-loadable="box" overlay="false" options="{color:'#360',radius:5,lines:8}">BOX</div>
+
+    <div class="buttons">
+        <button class="btn btn-primary" ng-click="page.req('body')">load me in the body</button>
+        <button class="btn btn-info" ng-click="page.req('box')">load me in a box</button>
+    </div>
+
+</main>
+
+<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://code.angularjs.org/1.3.0/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.3.0/angular-mocks.js"></script>
+
+<script src="bower_components/spin.js/spin.js"></script>
+<script src="../src/ngLoadableContent.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

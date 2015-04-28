@@ -1,0 +1,30 @@
+{
+  "name": "ngLoadableContent",
+  "version": "0.0.1",
+  "authors": [
+    "Alex Vitari <alexnoise79@gmail.com>"
+  ],
+  "description": "angular loadable content module",
+  "main": "src/ngLoadableContent.js",
+  "keywords": [
+    "angular",
+    "loadable",
+    "content",
+    "spin",
+    "spinner",
+    "loader"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/alexnoise79/ngLoadableContent",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "spin.js": "~2.0.2",
+    "angular": "~1.3.15"
+  }
+}

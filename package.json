@@ -1,0 +1,23 @@
+{
+  "name": "ngLoadableContent",
+  "version": "0.0.1",
+  "description": "angular loadable content module",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
+  },
+  "keywords": [
+    "angular",
+    "loadable",
+    "content",
+    "spin",
+    "spinner",
+    "loader"
+  ],
+  "author": "Alex Vitari",
+  "license": "description: loadable content module for angular",
+  "dependencies": {
+    "bower": "~1.4.1"
+  }
+}
