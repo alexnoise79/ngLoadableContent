@@ -3,7 +3,7 @@ Angular Loadable Content Module
 
 # Description
 ---------
-###This module provides a series of
+###This module provides a series of service and directives to show/hide and inject spin.js on a particular element across http requests.
 
 #Installation
 ---------
@@ -33,6 +33,9 @@ $loader.spinElement(loadable-id);
 ```
 - additional css 
 ```css
+[ng-loadable]{
+    position: relative;
+}
 .overlay {
     position: fixed;
     z-index: 5;
@@ -40,9 +43,6 @@ $loader.spinElement(loadable-id);
     height: 100%;
     top: 0;
     right: 0;
-}
-[ng-loadable]{
-    position: relative;
 }
 ```
 
