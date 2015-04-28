@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ngloadablecontent by alexnoise79</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Ngloadablecontent</h1>
+      <h2 class="project-tagline">angular loadable content module</h2>
+      <a href="https://github.com/alexnoise79/ngLoadableContent" class="btn">View on GitHub</a>
+      <a href="https://github.com/alexnoise79/ngLoadableContent/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/alexnoise79/ngLoadableContent/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="angular-loadable-content-module" class="anchor" href="#angular-loadable-content-module" aria-hidden="true"><span class="octicon octicon-link"></span></a>Angular Loadable Content Module</h1>
+
+<h1>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Description</h1>
+
+<hr>
+
+<h3>
+<a id="this-module-provides-a-series-of-service-and-directives-to-showhide-and-inject-spinjs-on-a-particular-element-across-http-requests" class="anchor" href="#this-module-provides-a-series-of-service-and-directives-to-showhide-and-inject-spinjs-on-a-particular-element-across-http-requests" aria-hidden="true"><span class="octicon octicon-link"></span></a>This module provides a series of service and directives to show/hide and inject spin.js on a particular element across http requests.</h3>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<hr>
+
+<p>TO be defined</p>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<hr>
+
+<ul>
+<li>import script in your page</li>
+</ul>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>src/ngLoadableContent.js<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</pre></div>
+
+<ul>
+<li>inject the module dependency</li>
+</ul>
+
+<div class="highlight highlight-js"><pre>angular.module(<span class="pl-s"><span class="pl-pds">'</span>yourProject<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>ngLoadableContent<span class="pl-pds">'</span></span>]);</pre></div>
+
+<ul>
+<li>include the directive on the loadable element </li>
+</ul>
+
+<div class="highlight highlight-html"><pre>&lt;<span class="pl-ent">div</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>whatever<span class="pl-pds">"</span></span> <span class="pl-e">ng-loadable</span>=<span class="pl-s"><span class="pl-pds">"</span>[loadable-id]<span class="pl-pds">"</span></span> <span class="pl-e">overlay</span>=<span class="pl-s"><span class="pl-pds">"</span>[true/false]<span class="pl-pds">"</span></span> <span class="pl-e">options</span>=<span class="pl-s"><span class="pl-pds">"</span>{color:'#360',radius:5,lines:8}<span class="pl-pds">"</span></span>&gt;Content&lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<ul>
+<li>inject the $loader service in your controller </li>
+</ul>
+
+<div class="highlight highlight-js"><pre>yourProject.controller(<span class="pl-s"><span class="pl-pds">'</span>YourController<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>$loader<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>$http<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">$loader</span>, <span class="pl-smi">$http</span>) { <span class="pl-c">/*your methods*/</span> }]);</pre></div>
+
+<ul>
+<li>call the $loader service on the element you want to show</li>
+</ul>
+
+<div class="highlight highlight-js"><pre>$loader.spinElement(loadable<span class="pl-k">-</span>id);</pre></div>
+
+<ul>
+<li>additional css </li>
+</ul>
+
+<div class="highlight highlight-css"><pre>[ng-loadable]{
+    <span class="pl-c1"><span class="pl-c1">position</span></span>: <span class="pl-c1">relative</span>;
+}
+<span class="pl-e">.overlay</span> {
+    <span class="pl-c1"><span class="pl-c1">position</span></span>: <span class="pl-c1">fixed</span>;
+    <span class="pl-c1"><span class="pl-c1">z-index</span></span>: <span class="pl-c1">5</span>;
+    <span class="pl-c1"><span class="pl-c1">width</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;
+    <span class="pl-c1"><span class="pl-c1">height</span></span>: <span class="pl-c1">100<span class="pl-k">%</span></span>;
+    <span class="pl-c1"><span class="pl-c1">top</span></span>: <span class="pl-c1">0</span>;
+    <span class="pl-c1"><span class="pl-c1">right</span></span>: <span class="pl-c1">0</span>;
+}</pre></div>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example</h2>
+
+<p>TO be defined</p>
+
+<h2>
+<a id="more-about-spinjs" class="anchor" href="#more-about-spinjs" aria-hidden="true"><span class="octicon octicon-link"></span></a>More About spin.js</h2>
+
+<p><a href="http://fgnass.github.io/spin.js/">http://fgnass.github.io/spin.js/</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/alexnoise79/ngLoadableContent">Ngloadablecontent</a> is maintained by <a href="https://github.com/alexnoise79">alexnoise79</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-61975079-2");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
+
