@@ -17,6 +17,14 @@
     position: relative;
 }
 
+form {
+    width: 50%;
+    margin: 25%;
+}
+form .overlay {
+    position: absolute;
+    background-color: #AAA;
+}
 /*  =====================================
         EXAMPLE
     ====================================== */

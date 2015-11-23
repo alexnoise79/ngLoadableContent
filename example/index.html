@@ -17,7 +17,19 @@
 
 <main ng-controller="PageController as page">
 
-    <div class="box" ng-loadable="box" overlay="false" options="{color:'#360',radius:5,lines:8}">BOX</div>
+    <div class="box" ng-loadable="box" overlay="false" options="{color:'#56ba4a',radius:5,lines:8}">BOX</div>
+
+
+    <form>
+        <div class="form-group">
+            <label for="inputEmail3">Email address</label>
+            <div ng-loadable="email" overlay="true" options="{color:'#f36',radius:8,lines:7,length:0, width:8, shadow:false, left: '97%'}">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            </div>
+        </div>
+
+        <button class="btn btn-warning" ng-click="page.req('email')">Check Email</button>
+    </form>
 
     <div class="buttons">
         <button class="btn btn-primary" ng-click="page.req('body')">load me in the body</button>

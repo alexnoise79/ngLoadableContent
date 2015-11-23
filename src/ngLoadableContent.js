@@ -1,7 +1,8 @@
 /**
- * Created by AlexNoise on 28/04/2015.
+ * @author Alex Vitari.
+ * @revision 23-11-2015
+ * @update support multiple spinners
  */
-
 
 'use strict';
 
@@ -12,27 +13,27 @@ angular.module('ngLoadableContent',[])
     .factory('httpInterceptor', ['$q', '$loader', function($q, $loader){
         return {
             'request': function(config){
-                $loader.startSpin();
+                config.headers.spinner=$loader.startSpin();//set the name of the spin
                 return config || $q.when(config);
             },
             'response': function(response){
-                $loader.stopSpin();
+                $loader.stopSpin(response.config.headers.spinner);
                 return response || $q.when(response);
             },
             'requestError': function(rejection){
-                $loader.stopSpin();
+                $loader.stopSpin(rejection.config.headers.spinner);
                 return $q.reject(rejection);
             },
             'responseError': function(rejection){
-                $loader.stopSpin();
+                $loader.stopSpin(rejection.config.headers.spinner);
                 return $q.reject(rejection);
             }
         };
     }])
     .service("$loader", ['$rootScope', function($rootScope){
         var $container = angular.element('body'),
-            defaultContainer = $container,
             overlay = true,
+            currentSpinner='',
             defaults = {
                 color: '#f60',
                 radius: 15,
@@ -44,30 +45,37 @@ angular.module('ngLoadableContent',[])
                 shadow: true,
                 top: '50%',
                 left: '50%'
-            },
-            spinner = new window.Spinner(angular.copy(defaults));
+            };
 
         return {
-            "spinElement": function(element){
-                $rootScope.$broadcast('loader.update', element);
+            "spinners" : [],
+            "spinElement": function(element, cb){
+                if(this.spinners.hasOwnProperty(element)){
+                    return false;
+                }else{
+                    $rootScope.$broadcast('loader.update', element);
+                    return cb();
+                }
             },
             "startSpin": function(){
                 if(overlay && !$container.hasClass('overlayed')){
-                    $container.addClass('overlayed').prepend('<div class="overlay"></div>');
+                    $container.addClass('overlayed').prepend(angular.element('<div>',{'class':"overlay"}));
                 }
-                spinner.spin($container[0]);
+                this.spinners[currentSpinner].spin($container[0]);
+                return currentSpinner;
             },
-            "stopSpin": function(){
+            "stopSpin": function(spinnerID){
                 if(overlay && $container.hasClass('overlayed')){
                     $container.removeClass('overlayed').find('.overlay').remove();
                 }
-                spinner.stop();
-                this.setSpin(defaultContainer, defaults, true);
+                this.spinners[spinnerID].stop();
+                delete this.spinners[spinnerID];
             },
             "setSpin": function($element, options, showOverlay){
                 overlay = showOverlay || false;
                 $container = $element;
-                $.extend(spinner.opts, options);
+                currentSpinner = $element.attr("ng-loadable");
+                this.spinners[currentSpinner]=new window.Spinner($.extend(angular.copy(defaults), options));
             }
         };
     }])
