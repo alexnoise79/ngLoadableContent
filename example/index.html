@@ -13,17 +13,17 @@
     <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css"/>-->
     <link rel="stylesheet" href="app.css">
 </head>
-<body ng-loadable="body" overlay="true" options="{color:'#f60',radius:12}">
+<body ng-loadable="body" options="{color:'#f60',radius:12,overlay:true}">
 
 <main ng-controller="PageController as page">
 
-    <div class="box" ng-loadable="box" overlay="false" options="{color:'#56ba4a',radius:5,lines:8}">BOX</div>
+    <div class="box" ng-loadable="box" options="{color:'#56ba4a',radius:5,lines:8,overlay:false,zIndex:5}">BOX</div>
 
 
     <form>
         <div class="form-group">
             <label for="inputEmail3">Email address</label>
-            <div ng-loadable="email" overlay="true" options="{color:'#f36',radius:8,lines:7,length:0, width:8, shadow:false, left: '97%'}">
+            <div ng-loadable="email" options="{color:'#f36',radius:8,lines:7,length:0,width:8,shadow:false,left:'97%',overlay:true,zIndex:5}">
                 <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
             </div>
         </div>

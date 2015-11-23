@@ -31,16 +31,15 @@ angular.module('ngLoadableContent',[])
         };
     }])
     .service("$loader", ['$rootScope', function($rootScope){
-        var $container = angular.element('body'),
-            overlay = true,
-            currentSpinner='',
+        var currentSpinner='',
             defaults = {
+                overlay: true,
                 color: '#f60',
                 radius: 15,
                 width: 5,
                 length: 15,
                 lines: 13,
-                zIndex: 6,
+                zIndex: 10,
                 speed: 1.5,
                 shadow: true,
                 top: '50%',
@@ -58,22 +57,21 @@ angular.module('ngLoadableContent',[])
                 }
             },
             "startSpin": function(){
-                if(overlay && !$container.hasClass('overlayed')){
+                var $container=angular.element('[ng-loadable="'+currentSpinner+'"]');
+                if(this.spinners[currentSpinner].opts.overlay){
                     $container.addClass('overlayed').prepend(angular.element('<div>',{'class':"overlay"}));
                 }
                 this.spinners[currentSpinner].spin($container[0]);
                 return currentSpinner;
             },
             "stopSpin": function(spinnerID){
-                if(overlay && $container.hasClass('overlayed')){
-                    $container.removeClass('overlayed').find('.overlay').remove();
+                if(this.spinners[spinnerID].opts.overlay){
+                    angular.element('[ng-loadable="'+spinnerID+'"]').removeClass('overlayed').find('.overlay').remove();
                 }
                 this.spinners[spinnerID].stop();
                 delete this.spinners[spinnerID];
             },
-            "setSpin": function($element, options, showOverlay){
-                overlay = showOverlay || false;
-                $container = $element;
+            "setSpin": function($element, options){
                 currentSpinner = $element.attr("ng-loadable");
                 this.spinners[currentSpinner]=new window.Spinner($.extend(angular.copy(defaults), options));
             }
@@ -89,7 +87,7 @@ angular.module('ngLoadableContent',[])
             controller: function($scope, $element, $attrs){
                 $scope.$on('loader.update', function(event, name){
                     if(name === $attrs.ngLoadable){
-                        $loader.setSpin($element, $scope.options, $scope.overlay);
+                        $loader.setSpin($element, $scope.options);
                     }
                 });
             }
