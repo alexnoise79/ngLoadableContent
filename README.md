@@ -3,7 +3,7 @@ Angular Loadable Content Module
 
 # Description
 ---------
-###This module provides a series of service and directives to show/hide and inject multiple spin.js instances on each wrapper element automatically using httpInterceptor.
+####This module provides a series of service and directives to show/hide and inject multiple spin.js instances on each wrapper element automatically using httpInterceptor.
 
 #Installation
 ---------
