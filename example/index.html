@@ -1,8 +1,12 @@
 <!DOCTYPE html ng-app="app">
-<!--[if lt IE 7]><html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]><html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]><html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--><html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>
+<html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="app" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="app" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="app" class="no-js"> <!--<![endif]-->
 <head lang="en">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,20 +20,30 @@
 <body ng-loadable="body" options="{color:'#f60',radius:12,overlay:true}">
 
 <main ng-controller="PageController as page">
+    <div id="wrapper">
 
-    <div class="box" ng-loadable="box" options="{color:'#56ba4a',radius:5,lines:8,overlay:false,zIndex:5}">BOX</div>
-
-
-    <form>
-        <div class="form-group">
-            <label for="inputEmail3">Email address</label>
-            <div ng-loadable="email" options="{color:'#f36',radius:8,lines:7,length:0,width:8,shadow:false,left:'97%',overlay:true,zIndex:5}">
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-            </div>
+        <div class="box" ng-loadable="box" options="{color:'#56ba4a',radius:5,lines:8,overlay:false,zIndex:5}">
+            BOX
+            <pre>
+                <div>{{page.box[0]}}</div>
+                <div>{{page.box[1]}}</div>
+                <div>{{page.box[2]}}</div>
+            </pre>
         </div>
 
-        <button class="btn btn-warning" ng-click="page.req('email')">Check Email</button>
-    </form>
+        <form novalidate>
+            <div class="form-group">
+                <label for="inputEmail3">Email address</label>
+
+                <div ng-loadable="email"
+                     options="{color:'#f36',radius:8,lines:7,length:0,width:8,shadow:false,left:'97%',overlay:true,zIndex:5}">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value="{{page.email[0]}}">
+                </div>
+            </div>
+            <button class="btn btn-warning" ng-click="page.req('email')">Check Email</button>
+        </form>
+
+    </div>
 
     <div class="buttons">
         <button class="btn btn-primary" ng-click="page.req('body')">load me in the body</button>
@@ -37,6 +51,7 @@
     </div>
 
 </main>
+
 
 <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="https://code.angularjs.org/1.3.0/angular.min.js"></script>

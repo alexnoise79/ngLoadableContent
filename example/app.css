@@ -17,22 +17,23 @@
     position: relative;
 }
 
+/*  =====================================
+        EXAMPLE
+    ====================================== */
+
 form {
-    width: 50%;
-    margin: 25%;
+
 }
 form .overlay {
     position: absolute;
     z-index: 4;
     background-color: #AAA;
 }
-/*  =====================================
-        EXAMPLE
-    ====================================== */
 .box {
     width: 200px;
-    height: 200px;
+    min-height: 200px;
     margin: 20px;
+    padding: 20px;
     background-color: rgba(200,200,200,0.5);
 }
 
@@ -41,4 +42,22 @@ form .overlay {
     bottom: 0;
     left: 0;
     width: 100%;
+}
+
+#wrapper {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+#wrapper > * {
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
 }

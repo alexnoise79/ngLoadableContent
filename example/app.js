@@ -10,7 +10,7 @@ var app = angular.module('app',['ngLoadableContent','ngMockE2E']);//<<-- you hav
     JUST THIS EXAMPLE
     ========================================= */
 //Fake XML HTTP REQUEST delayed require ngMockE2E !!!DO NOT IMPORT!!! in your projects as dependency
-app.run(function($httpBackend){$httpBackend.whenGET('/items').respond(function(){return [200,{foo:[1,2,3]},{}]})});
+app.run(function($httpBackend){$httpBackend.whenGET('/items').respond(function(){return [200,[Math.random()*1,Math.random()*2, Math.random()*3],{}]})});
 //Fake HTTP provider
 app.config(function($provide){$provide.decorator('$httpBackend',function($delegate){var p=function(m,u,d,c,h){var i=function(){var _this=this,_arguments=arguments;setTimeout(function(){c.apply(_this,_arguments);},(Math.random()*2e3)+1e3);};return $delegate.call(this,m,u,d,i,h);};for(var key in $delegate){p[key]=$delegate[key];}return p;});})
 /*  ========================================= */
@@ -28,6 +28,8 @@ app.controller('PageController', ['$loader', '$http', function ($loader, $http) 
             //call the fake http provider
             $http.get('/items').success(function (data) {
                 page.items = data;
+                //angular.element('[ng-loadable="'+obj+'"]').html(data);
+                page[obj]=data;
             });
         });
     };
