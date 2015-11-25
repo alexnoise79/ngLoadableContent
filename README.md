@@ -7,8 +7,9 @@ Angular Loadable Content Module
 
 #Installation
 ---------
+```html
 bower install ngloadablecontent
-
+```
 #Usage
 ---------
 - import script in your page
