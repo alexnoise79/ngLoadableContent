@@ -22,13 +22,11 @@
 <main ng-controller="PageController as page">
     <div id="wrapper">
 
-        <div class="box" ng-loadable="box" options="{color:'#56ba4a',radius:5,lines:8,overlay:false,zIndex:5}">
-            BOX
-            <pre>
-                <div>{{page.box[0]}}</div>
-                <div>{{page.box[1]}}</div>
-                <div>{{page.box[2]}}</div>
-            </pre>
+        <div class="box" ng-loadable="graph" options="{color:'#56ba4a',radius:5,lines:8,overlay:false,zIndex:5}">
+            GRAPH
+            <div class="graph">
+                <div ng-repeat="bx in page.graph track by $index" style="height:{{bx+'px'}}"></div>
+            </div>
         </div>
 
         <form novalidate>
@@ -47,7 +45,7 @@
 
     <div class="buttons">
         <button class="btn btn-primary" ng-click="page.req('body')">load me in the body</button>
-        <button class="btn btn-info" ng-click="page.req('box')">load me in a box</button>
+        <button class="btn btn-info" ng-click="page.req('graph', '/graph')">load the graph</button>
     </div>
 
 </main>
