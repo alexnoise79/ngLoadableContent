@@ -27,13 +27,17 @@ app.run(function($httpBackend){
 app.config(function($provide){$provide.decorator('$httpBackend',function($delegate){var p=function(m,u,d,c,h){var i=function(){var _this=this,_arguments=arguments;setTimeout(function(){c.apply(_this,_arguments);},(Math.random()*2e3)+1e3);};return $delegate.call(this,m,u,d,i,h);};for(var key in $delegate){p[key]=$delegate[key];}return p;});})
 /*  ========================================= */
 
-
 /*  =========================================
-    YOUR CONTROLLER EXAMPLE
+     DEFAULT CONFIGURATION FOR YOUR PROJECT (override the default)
     ========================================= */
+
 app.config(['$loaderConfigProvider',function ($loaderConfigProvider) {
     $loaderConfigProvider.setDefault({color:"#0047ab"});
 }]);
+
+/*  =========================================
+     YOUR CONTROLLER EXAMPLE
+    ========================================= */
 
 app.controller('PageController', ['$loader', '$http', function ($loader, $http) {
     var page=this;

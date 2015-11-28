@@ -21,6 +21,12 @@ bower install ngloadablecontent
 ```js
 angular.module('yourProject', ['ngLoadableContent']);
 ```
+- override the default configuration (optional)
+```js
+app.config(['$loaderConfigProvider',function ($loaderConfigProvider) {
+    $loaderConfigProvider.setDefault({color:"#0047ab"});
+}]);
+```
 - include the directive on the loadable element 
 ```html
 <div id="whatever" ng-loadable="[loadable-id]" options="{color:'#360',radius:5,lines:8,overlay:[true/false]}">Content</div>
