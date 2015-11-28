@@ -23,8 +23,8 @@ angular.module('yourProject', ['ngLoadableContent']);
 ```
 - override the default configuration (optional)
 ```js
-app.config(['$loaderConfigProvider',function ($loaderConfigProvider) {
-    $loaderConfigProvider.setDefault({color:"#0047ab"});
+yourProject.config(['$loaderConfigProvider',function ($loaderConfigProvider) {
+    $loaderConfigProvider.setDefault({color:"#0047ab", lines:20, radius:5});
 }]);
 ```
 - include the directive on the loadable element 
