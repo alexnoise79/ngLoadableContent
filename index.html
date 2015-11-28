@@ -56,6 +56,14 @@
 <div class="highlight highlight-source-js"><pre><span class="pl-smi">angular</span>.<span class="pl-en">module</span>(<span class="pl-s"><span class="pl-pds">'</span>yourProject<span class="pl-pds">'</span></span>, [<span class="pl-s"><span class="pl-pds">'</span>ngLoadableContent<span class="pl-pds">'</span></span>]);</pre></div>
 
 <ul>
+<li>override the default configuration (optional)</li>
+</ul>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">yourProject</span>.<span class="pl-en">config</span>([<span class="pl-s"><span class="pl-pds">'</span>$loaderConfigProvider<span class="pl-pds">'</span></span>,<span class="pl-k">function</span> (<span class="pl-smi">$loaderConfigProvider</span>) {
+    $<span class="pl-smi">loaderConfigProvider</span>.<span class="pl-en">setDefault</span>({color<span class="pl-k">:</span><span class="pl-s"><span class="pl-pds">"</span>#0047ab<span class="pl-pds">"</span></span>, lines<span class="pl-k">:</span><span class="pl-c1">20</span>, radius<span class="pl-k">:</span><span class="pl-c1">5</span>});
+}]);</pre></div>
+
+<ul>
 <li>include the directive on the loadable element </li>
 </ul>
 
