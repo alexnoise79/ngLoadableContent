@@ -40,7 +40,7 @@ app.config(['$loaderConfigProvider',function ($loaderConfigProvider) {
     ========================================= */
 
 app.controller('PageController', ['$loader', '$http', function ($loader, $http) {
-    var page=this;
+    var page=this, toggle=true;
 
     this.req = function (obj, req) {
         req = req || '/items';
@@ -53,4 +53,15 @@ app.controller('PageController', ['$loader', '$http', function ($loader, $http) 
             });
         });
     };
+
+    this.customStart = function(obj){
+        if(toggle){
+            $loader.spinElement(obj, function () {
+                $loader.startSpin();
+            });
+        }else{
+            $loader.stopSpin(obj);
+        }
+        toggle= !toggle;
+    }
 }])

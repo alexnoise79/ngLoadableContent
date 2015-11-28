@@ -25,19 +25,21 @@ form {
 
 }
 
-form .overlay {
+form .overlay, .box .overlay {
     position: absolute;
     z-index: 4;
     background-color: #AAA;
 }
 
 .box {
+    position: relative;
     width: 200px;
     min-height: 200px;
     margin: 20px;
     padding: 20px;
     background-color: rgba(200, 200, 200, 0.5);
 }
+
 
 .box .graph {
     height: 190px;
