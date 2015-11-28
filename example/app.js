@@ -31,6 +31,9 @@ app.config(function($provide){$provide.decorator('$httpBackend',function($delega
 /*  =========================================
     YOUR CONTROLLER EXAMPLE
     ========================================= */
+app.config(['$loaderConfigProvider',function ($loaderConfigProvider) {
+    $loaderConfigProvider.setDefault({color:"#0047ab"});
+}]);
 
 app.controller('PageController', ['$loader', '$http', function ($loader, $http) {
     var page=this;

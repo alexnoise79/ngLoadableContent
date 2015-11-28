@@ -10,6 +10,30 @@ angular.module('ngLoadableContent',[])
     .config(['$httpProvider',function($httpProvider){
         $httpProvider.interceptors.push('httpInterceptor');
     }])
+    .provider('$loaderConfig', function () {
+        var defaults = {
+            overlay: true,
+            color: '#f60',
+            radius: 15,
+            width: 5,
+            length: 15,
+            lines: 13,
+            zIndex: 10,
+            speed: 1.5,
+            shadow: true,
+            top: '50%',
+            left: '50%'
+        };
+
+        return {
+            setDefault: function (conf) {
+                defaults = $.extend(defaults, conf);
+            },
+            $get: function () {
+                return  defaults;
+            }
+        };
+    })
     .factory('httpInterceptor', ['$q', '$loader', function($q, $loader){
         return {
             'request': function(config){
@@ -30,21 +54,8 @@ angular.module('ngLoadableContent',[])
             }
         };
     }])
-    .service("$loader", ['$rootScope', function($rootScope){
-        var currentSpinner='',
-            defaults = {
-                overlay: true,
-                color: '#f60',
-                radius: 15,
-                width: 5,
-                length: 15,
-                lines: 13,
-                zIndex: 10,
-                speed: 1.5,
-                shadow: true,
-                top: '50%',
-                left: '50%'
-            };
+    .service("$loader", ['$rootScope','$loaderConfig', function($rootScope, $loaderConfig){
+        var currentSpinner='';
 
         return {
             "spinners" : [],
@@ -73,7 +84,7 @@ angular.module('ngLoadableContent',[])
             },
             "setSpin": function($element, options){
                 currentSpinner = $element.attr("ng-loadable");
-                this.spinners[currentSpinner]=new window.Spinner($.extend(angular.copy(defaults), options));
+                this.spinners[currentSpinner]=new window.Spinner($.extend(angular.copy($loaderConfig), options));
             }
         };
     }])
