@@ -85,6 +85,14 @@ angular.module('ngLoadableContent',[])
             "setSpin": function($element, options){
                 currentSpinner = $element.attr("ng-loadable");
                 this.spinners[currentSpinner]=new window.Spinner($.extend(angular.copy($loaderConfig), options));
+            },
+            "imageSpin" : function($element){
+                /*var loader=this;
+                $element.wrap('<span class="imageWrapper"></span>');
+                this.spinners[currentSpinner].spin($element.parent()[0]);
+                $element[0].onload=function(){
+                    loader.stopSpin(currentSpinner);
+                }*/
             }
         };
     }])
@@ -101,6 +109,11 @@ angular.module('ngLoadableContent',[])
                         $loader.setSpin($element, $scope.options);
                     }
                 });
+
+                /*if($element[0].tagName.toLowerCase()==="img"){
+                    $loader.setSpin($element, $scope.options);
+                    $loader.imageSpin($element);
+                }*/
             }
         };
     }]);
