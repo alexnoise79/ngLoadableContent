@@ -95,7 +95,8 @@ angular.module('ngLoadableContent',[])
             },
             "imageSpin" : function($element, options){
                 var loader = this,
-                    spinID = $element.attr("ng-loadable");
+                    spinID = $element.attr("ng-loadable"),
+                    options = options || JSON.parse(JSON.stringify(eval('('+$element.attr("options")+')')));
 
                 if(this.spinners.hasOwnProperty(spinID)){
                     return false;

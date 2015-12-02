@@ -36,6 +36,7 @@
         </div>
 
         <div class="box">
+            <span>FORM</span>
             <form class="inner" novalidate>
                 <div class="form-group">
                     <label for="inputEmail3">Email address</label>
@@ -49,8 +50,9 @@
         </div>
 
         <div class="box">
+            <span>IMAGE</span>
             <div class="inner">
-                <img id="big-image" ng-src="http://lorempixel.com/1920/768/?a=1" ng-loadable="img1" options="{scale:2, color: '#fff'}"/>
+                <img id="big-image" ng-src="http://lorempixel.com/1920/768/?a=1" ng-loadable="img1" options="{scale:3, color:'#5cb85c', shadow:false}"/>
             </div>
             <button class="btn btn-success" ng-click="page.reloadImage('img1')">Reload Image</button>
         </div>
