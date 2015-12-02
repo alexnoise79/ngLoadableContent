@@ -21,7 +21,7 @@
 <main ng-controller="PageController as page">
     <div id="wrapper">
 
-        <div class="box" ng-loadable="graph" options="{radius:25, lines:13, length:1, width:9, trail:100, overlay:false, zIndex:5}">
+        <div class="box" ng-loadable="graph" options="{color:'#5bc0de', radius:25, lines:13, length:1, width:9, trail:100, overlay:false, zIndex:5}">
             <span>GRAPH</span>
             <div class="inner">
                 <div class="bars" ng-repeat="bx in page.graph track by $index" style="height:{{bx+'px'}}"></div>
@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label for="inputEmail3">Email address</label>
                     <div ng-loadable="email"
-                         options="{color:'#f36', radius:8, lines:7, length:0, width:8, shadow:false, left:'90%', zIndex:5}">
+                         options="{color:'#f0ad4e', radius:8, lines:7, length:0, width:8, shadow:false, left:'90%', zIndex:5}">
                         <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value="{{page.email[0]}}">
                     </div>
                 </div>
@@ -52,7 +52,7 @@
         <div class="box">
             <span>IMAGE</span>
             <div class="inner">
-                <img id="big-image" ng-src="http://lorempixel.com/1920/768/?a=1" ng-loadable="img1" options="{scale:3, color:'#5cb85c', shadow:false}"/>
+                <img id="big-image" ng-src="http://lorempixel.com/1920/768/?a=1" ng-loadable="img1" options="{scale:3, color:'#5cb85c'}"/>
             </div>
             <button class="btn btn-success" ng-click="page.reloadImage('img1')">Reload Image</button>
         </div>
