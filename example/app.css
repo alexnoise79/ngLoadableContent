@@ -20,12 +20,17 @@
 /*  =====================================
         EXAMPLE
     ====================================== */
-
-form {
-
+.btn:focus{
+    outline: none;
+    border-color: transparent;
 }
 
-form .overlay, .box .overlay {
+.btn {
+    width: 100%;
+}
+
+form .overlay,
+.box .overlay {
     position: absolute;
     z-index: 4;
     background-color: #AAA;
@@ -33,13 +38,16 @@ form .overlay, .box .overlay {
 
 .box {
     position: relative;
-    width: 200px;
+    width: 400px;
     min-height: 200px;
-    margin: 20px;
-    padding: 20px;
+    margin: 10px 20px;
+    padding: 10px;
     background-color: rgba(200, 200, 200, 0.5);
 }
 
+.box .btn{
+    border-radius: 0 0 4px 4px;
+}
 
 .box .graph {
     height: 190px;
@@ -61,7 +69,7 @@ form .overlay, .box .overlay {
     align-items: flex-end;
 }
 
-.box .graph > div {
+.box .graph .bars {
     -webkit-transition: height 0.8s;
     -moz-transition: height 0.8s;
     transition: height 0.8s;
@@ -91,6 +99,15 @@ form .overlay, .box .overlay {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    /*-webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;*/
 }
 
 #wrapper > * {
@@ -103,7 +120,7 @@ form .overlay, .box .overlay {
     max-width: 300px;
 }
 
-#wrapper .big-image{
+#big-image{
     width: 300px;
     height: 169px;
 }

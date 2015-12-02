@@ -23,15 +23,20 @@
     <div id="wrapper">
 
         <div class="box" ng-loadable="graph" options="{radius:25, lines:13, length:1, width:9, trail:100, overlay:false, zIndex:5}">
-            GRAPH
+            <span>GRAPH</span>
             <div class="graph">
-                <div ng-repeat="bx in page.graph track by $index" style="height:{{bx+'px'}}"></div>
+                <div class="bars" ng-repeat="bx in page.graph track by $index" style="height:{{bx+'px'}}"></div>
             </div>
+            <button class="btn btn-info" ng-click="page.req('graph', '/graph')">load the graph</button>
         </div>
 
-        <div class="box" ng-loadable="manual">MANUAL</div>
+        <div class="box">
+            <span>MANUAL</span>
+            <div class="graph" ng-loadable="manual"></div>
+            <button class="btn btn-primary" ng-click="page.customStart('manual')">Manual</button>
+        </div>
 
-        <form novalidate>
+        <form class="box" novalidate>
             <div class="form-group">
                 <label for="inputEmail3">Email address</label>
 
@@ -43,17 +48,19 @@
             <button class="btn btn-warning" ng-click="page.req('email')">Check Email</button>
         </form>
 
-        <!--img class="big-image" src="http://lorempixel.com/1920/1080/?a=1" ng-loadable="img1" options="{overlay:false}"/>
-        <img class="big-image" src="http://lorempixel.com/1920/1080/?a=2" ng-loadable="img2" options="{overlay:false}"/>
-        <img class="big-image" src="http://lorempixel.com/1920/1080/?a=3" ng-loadable="img3" options="{overlay:false}"/>
-        <img class="big-image" src="http://lorempixel.com/1920/1080/?a=4" ng-loadable="img4" options="{overlay:false}"/-->
+        <div class="box">
+            <div class="graph">
+                <img id="big-image" ng-src="http://lorempixel.com/1920/1024/?a=1" ng-loadable="img1" options="{overlay:false}"/>
+            </div>
+            <button class="btn btn-warning" ng-click="page.reloadImage('img1')">Reload Image</button>
+        </div>
 
     </div>
 
     <div class="buttons">
         <button class="btn btn-primary" ng-click="page.req('body')">load me in the body</button>
-        <button class="btn btn-info" ng-click="page.req('graph', '/graph')">load the graph</button>
-        <button class="btn btn-primary" ng-click="page.customStart('manual')">Manual</button>
+
+
     </div>
 
 </main>

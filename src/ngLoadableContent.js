@@ -68,31 +68,38 @@ angular.module('ngLoadableContent',[])
                 }
             },
             "startSpin": function(){
-                var $container=angular.element('[ng-loadable="'+currentSpinner+'"]');
-                if(this.spinners[currentSpinner].opts.overlay){
+                var $container=this.spinners[currentSpinner].element;
+                if(this.spinners[currentSpinner].spinner.opts.overlay){
                     $container.addClass('overlayed').prepend(angular.element('<div>',{'class':"overlay"}));
                 }
-                this.spinners[currentSpinner].spin($container[0]);
+                this.spinners[currentSpinner].spinner.spin($container[0]);
                 return currentSpinner;
             },
             "stopSpin": function(spinnerID){
-                if(this.spinners[spinnerID].opts.overlay){
+                if(this.spinners[spinnerID].spinner.opts.overlay){
                     angular.element('[ng-loadable="'+spinnerID+'"]').removeClass('overlayed').find('.overlay').remove();
                 }
-                this.spinners[spinnerID].stop();
+                this.spinners[spinnerID].spinner.stop();
                 delete this.spinners[spinnerID];
             },
             "setSpin": function($element, options){
                 currentSpinner = $element.attr("ng-loadable");
-                this.spinners[currentSpinner]=new window.Spinner($.extend(angular.copy($loaderConfig), options));
+                this.spinners[currentSpinner]={ element: $element, spinner: new window.Spinner($.extend(angular.copy($loaderConfig), options))};
             },
-            "imageSpin" : function($element){
-                /*var loader=this;
+            "imageSpin" : function($element, options){
+                if(this.spinners.hasOwnProperty($element.attr("ng-loadable"))){
+                    return false;
+                }
+                this.setSpin($element, options);
+
+                var loader = this,
+                    spinID = currentSpinner;
                 $element.wrap('<span class="imageWrapper"></span>');
-                this.spinners[currentSpinner].spin($element.parent()[0]);
+                this.spinners[spinID].spinner.spin(this.spinners[spinID].element.parent()[0]);
                 $element[0].onload=function(){
-                    loader.stopSpin(currentSpinner);
-                }*/
+                    loader.stopSpin(spinID);
+                    $element.unwrap();
+                }
             }
         };
     }])
@@ -100,8 +107,7 @@ angular.module('ngLoadableContent',[])
         return {
             restrict: 'A',
             scope: {
-                options: '=',
-                overlay: '='
+                options: '='
             },
             controller: function($scope, $element, $attrs){
                 $scope.$on('loader.update', function(event, name){
@@ -110,10 +116,9 @@ angular.module('ngLoadableContent',[])
                     }
                 });
 
-                /*if($element[0].tagName.toLowerCase()==="img"){
-                    $loader.setSpin($element, $scope.options);
-                    $loader.imageSpin($element);
-                }*/
+                if($element[0].tagName.toLowerCase()==="img"){
+                    $loader.imageSpin($element,$scope.options);
+                }
             }
         };
     }]);
