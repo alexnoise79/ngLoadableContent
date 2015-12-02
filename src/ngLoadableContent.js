@@ -77,7 +77,14 @@ angular.module('ngLoadableContent',[])
             },
             "stopSpin": function(spinnerID){
                 if(this.spinners[spinnerID].spinner.opts.overlay){
-                    this.spinners[spinnerID].element.removeClass('overlayed').children('.overlay').remove();
+                    var element=this.spinners[spinnerID].element;
+
+                    element.removeClass('overlayed');
+                    if(element[0].tagName.toLowerCase()==='img'){
+                        element.prev('.overlay').remove();
+                    }else{
+                        element.children('.overlay').remove();
+                    }
                 }
                 this.spinners[spinnerID].spinner.stop();
                 delete this.spinners[spinnerID];
@@ -96,6 +103,9 @@ angular.module('ngLoadableContent',[])
                 this.setSpin($element, options);
 
                 $element.wrap('<span class="imageWrapper"></span>');
+                if(this.spinners[spinID].spinner.opts.overlay){
+                    $element.addClass('overlayed').before(angular.element('<div>',{'class':"overlay"}));
+                }
                 this.spinners[spinID].spinner.spin(this.spinners[spinID].element.parent()[0]);
                 $element[0].onload=function(){
                     loader.stopSpin(spinID);
