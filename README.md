@@ -66,27 +66,27 @@ TO be defined
 
 Options
 ---------
-overlay //display an overlay
-lines // The number of lines to draw
-length // The length of each line
-width // The line thickness
-radius // The radius of the inner circle
-scale // Scales overall size of the spinner
-corners // Corner roundness (0..1)
-color // #rgb or #rrggbb or array of colors
-opacity // Opacity of the lines
-rotate // The rotation offset
-direction // 1: clockwise, -1: counterclockwise
-speed // Rounds per second
-trail // Afterglow percentage
-fps // Frames per second when using setTimeout() as a fallback for CSS
-zIndex // The z-index (defaults to 10)
-className // The CSS class to assign to the spinner (defaults 'spinner')
-top // Top position relative to parent
-left // Left position relative to parent
-shadow // Whether to render a shadow
-hwaccel // Whether to use hardware acceleration
-position // Element positioning
+- overlay //display an overlay
+- lines // The number of lines to draw
+- length // The length of each line
+- width // The line thickness
+- radius // The radius of the inner circle
+- scale // Scales overall size of the spinner
+- corners // Corner roundness (0..1)
+- color // #rgb or #rrggbb or array of colors
+- opacity // Opacity of the lines
+- rotate // The rotation offset
+- direction // 1: clockwise, -1: counterclockwise
+- speed // Rounds per second
+- trail // Afterglow percentage
+- fps // Frames per second when using setTimeout() as a fallback for CSS
+- zIndex // The z-index (defaults to 10)
+- className // The CSS class to assign to the spinner (defaults 'spinner')
+- top // Top position relative to parent
+- left // Left position relative to parent
+- shadow // Whether to render a shadow
+- hwaccel // Whether to use hardware acceleration
+- position // Element positioning
 
 More About spin.js
 ----------
