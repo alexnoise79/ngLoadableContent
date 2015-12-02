@@ -1,7 +1,7 @@
 /**
  * @author Alex Vitari.
- * @revision 23-11-2015
- * @update support multiple spinners
+ * @revision 02-12-2015
+ * @update support img tag
  */
 
 'use strict';
@@ -77,7 +77,7 @@ angular.module('ngLoadableContent',[])
             },
             "stopSpin": function(spinnerID){
                 if(this.spinners[spinnerID].spinner.opts.overlay){
-                    angular.element('[ng-loadable="'+spinnerID+'"]').removeClass('overlayed').find('.overlay').remove();
+                    this.spinners[spinnerID].element.removeClass('overlayed').children('.overlay').remove();
                 }
                 this.spinners[spinnerID].spinner.stop();
                 delete this.spinners[spinnerID];
@@ -87,13 +87,14 @@ angular.module('ngLoadableContent',[])
                 this.spinners[currentSpinner]={ element: $element, spinner: new window.Spinner($.extend(angular.copy($loaderConfig), options))};
             },
             "imageSpin" : function($element, options){
-                if(this.spinners.hasOwnProperty($element.attr("ng-loadable"))){
+                var loader = this,
+                    spinID = $element.attr("ng-loadable");
+
+                if(this.spinners.hasOwnProperty(spinID)){
                     return false;
                 }
                 this.setSpin($element, options);
 
-                var loader = this,
-                    spinID = currentSpinner;
                 $element.wrap('<span class="imageWrapper"></span>');
                 this.spinners[spinID].spinner.spin(this.spinners[spinID].element.parent()[0]);
                 $element[0].onload=function(){

@@ -14,7 +14,6 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
-    <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css"/>-->
     <link rel="stylesheet" href="app.css">
 </head>
 <body ng-loadable="body" options="{color:'#f60',radius:12}">
@@ -24,7 +23,7 @@
 
         <div class="box" ng-loadable="graph" options="{radius:25, lines:13, length:1, width:9, trail:100, overlay:false, zIndex:5}">
             <span>GRAPH</span>
-            <div class="graph">
+            <div class="inner">
                 <div class="bars" ng-repeat="bx in page.graph track by $index" style="height:{{bx+'px'}}"></div>
             </div>
             <button class="btn btn-info" ng-click="page.req('graph', '/graph')">load the graph</button>
@@ -32,35 +31,34 @@
 
         <div class="box">
             <span>MANUAL</span>
-            <div class="graph" ng-loadable="manual"></div>
+            <div class="inner" ng-loadable="manual"></div>
             <button class="btn btn-primary" ng-click="page.customStart('manual')">Manual</button>
         </div>
 
-        <form class="box" novalidate>
-            <div class="form-group">
-                <label for="inputEmail3">Email address</label>
-
-                <div ng-loadable="email"
-                     options="{color:'#f36', radius:8, lines:7, length:0, width:8, shadow:false, left:'97%', zIndex:5}">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value="{{page.email[0]}}">
+        <div class="box">
+            <form class="inner" novalidate>
+                <div class="form-group">
+                    <label for="inputEmail3">Email address</label>
+                    <div ng-loadable="email"
+                         options="{color:'#f36', radius:8, lines:7, length:0, width:8, shadow:false, left:'90%', zIndex:5}">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value="{{page.email[0]}}">
+                    </div>
                 </div>
-            </div>
+            </form>
             <button class="btn btn-warning" ng-click="page.req('email')">Check Email</button>
-        </form>
+        </div>
 
         <div class="box">
-            <div class="graph">
-                <img id="big-image" ng-src="http://lorempixel.com/1920/1024/?a=1" ng-loadable="img1" options="{overlay:false}"/>
+            <div class="inner">
+                <img id="big-image" ng-src="http://lorempixel.com/1920/768/?a=1" ng-loadable="img1" options="{scale:2, color: '#fff'}"/>
             </div>
-            <button class="btn btn-warning" ng-click="page.reloadImage('img1')">Reload Image</button>
+            <button class="btn btn-success" ng-click="page.reloadImage('img1')">Reload Image</button>
         </div>
 
     </div>
 
     <div class="buttons">
         <button class="btn btn-primary" ng-click="page.req('body')">load me in the body</button>
-
-
     </div>
 
 </main>
