@@ -17,6 +17,10 @@
 html {
     font-size: 16px;
 }
+.page-header {
+    margin: 0;
+    padding: 5rem 6rem;
+}
 .pl-c /* comment */ {
   color: #969896;
 }
