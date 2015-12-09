@@ -14,7 +14,9 @@
    limitations under the License.
 
 */
-
+html {
+    font-size: 16px;
+}
 .pl-c /* comment */ {
   color: #969896;
 }
