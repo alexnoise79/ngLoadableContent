@@ -59,7 +59,8 @@ yourProject.controller('YourController', ['$loader', '$http', function ($loader,
 ```
 # Example
 ---------
-TO be defined
+http://alexnoise79.github.io/ngLoadableContent/
+
 # Options
 ---------
 * overlay //display an overlay
