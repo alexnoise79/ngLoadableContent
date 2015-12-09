@@ -23,7 +23,7 @@
     <div id="wrapper">
 
         <div class="box" ng-loadable="graph" options="{color:'#5bc0de', radius:25, lines:13, length:1, width:9, trail:100, overlay:false, zIndex:5}">
-            <span>GRAPH</span>
+            <span>GRAPH (key: 1)</span>
             <div class="inner">
                 <div class="bars" ng-repeat="bx in page.graph track by $index" style="height:{{bx+'px'}}"></div>
             </div>
@@ -31,13 +31,13 @@
         </div>
 
         <div class="box">
-            <span>MANUAL</span>
+            <span>MANUAL (key: 2)</span>
             <div class="inner" ng-loadable="manual"></div>
             <button class="btn btn-primary" ng-click="page.customStart('manual')">Manual</button>
         </div>
 
         <div class="box">
-            <span>FORM</span>
+            <span>FORM (key: 3)</span>
             <form class="inner" novalidate>
                 <div class="form-group">
                     <label for="inputEmail3">Email address <span class="valid" ng-show="page.email">✓</span></label>
@@ -51,7 +51,7 @@
         </div>
 
         <div class="box">
-            <span>IMAGE</span>
+            <span>IMAGE (key: 4)</span>
             <div class="inner">
                 <img id="big-image" ng-src="http://lorempixel.com/1920/768/?a=1" ng-loadable="img1" options="{scale:3, color:'#5cb85c'}"/>
             </div>
@@ -64,7 +64,7 @@
     </p>
 
     <div class="buttons">
-        <button class="btn btn-primary" ng-click="page.req('body')">load me in the body</button>
+        <button class="btn btn-primary" ng-click="page.req('body')">load me in the body (key: spacebar)</button>
     </div>
 
 </main>

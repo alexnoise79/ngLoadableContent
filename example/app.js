@@ -38,8 +38,28 @@ app.config(['$loaderConfigProvider',function ($loaderConfigProvider) {
      YOUR CONTROLLER EXAMPLE
     ========================================= */
 
-app.controller('PageController', ['$loader', '$http', function ($loader, $http) {
+app.controller('PageController', ['$loader', '$http', '$document', function ($loader, $http, $document) {
     var page=this, toggle=true;
+
+    $document.bind('keypress', function (e) {
+        switch(e.which){
+            case 49:
+                page.req('graph', '/graph');
+                break;
+            case 50:
+                page.customStart('manual');
+                break;
+            case 51:
+                page.req('email','/email', page.name);
+                break;
+            case 52:
+                page.reloadImage('img1');
+                break;
+            case 32:
+                page.req('body');
+                break;
+        }
+    });
 
     this.req = function (spinID, req, data) {
         req = req || '/items';
