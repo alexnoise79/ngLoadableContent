@@ -20,15 +20,15 @@
 /*  =====================================
         EXAMPLE
     ====================================== */
-.btn:focus{
+#wrapper .btn:focus{
     outline: none;
     border-color: transparent;
 }
 
-.btn {
+#wrapper .btn {
     width: 100%;
 }
-form {
+#wrapper form {
     margin: 0;
 }
 
