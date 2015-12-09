@@ -85,12 +85,12 @@ form .overlay,
     flex: 0 1 30px;
 }
 
-.buttons {
+/*.buttons {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-}
+}*/
 
 #wrapper {
     display: -ms-flexbox;
