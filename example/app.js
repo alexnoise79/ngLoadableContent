@@ -12,6 +12,11 @@ var app = angular.module('app',['ngLoadableContent','ngMockE2E']);//<<-- you hav
 //Fake XML HTTP REQUEST delayed require ngMockE2E !!!DO NOT IMPORT!!! in your projects as dependency
 app.run(function($httpBackend){
     function round(i){return Math.floor(Math.random()*i);}
+    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    $httpBackend.whenGET('/email').respond(function(){return [200, false,{}]});
+
+    $httpBackend.whenPOST('/email').respond(function(method,url,data){return [200, re.test(data),{}]});
 
     $httpBackend.whenGET('/items').respond(function(){return [200,[Math.random()*1,Math.random()*2, Math.random()*3],{}]});
 
@@ -36,14 +41,21 @@ app.config(['$loaderConfigProvider',function ($loaderConfigProvider) {
 app.controller('PageController', ['$loader', '$http', function ($loader, $http) {
     var page=this, toggle=true;
 
-    this.req = function (spinID, req) {
+    this.req = function (spinID, req, data) {
         req = req || '/items';
         $loader.spinElement(spinID, function(){  //<-- call the request inside
             //call the fake http provider
-            $http.get(req).success(function (data) {
-                page.items = data;
-                page[spinID]=data;
-            });
+            if(data){
+                $http.post(req,data).success(function (data) {
+                    page.items = data;
+                    page[spinID] = data;
+                });
+            }else {
+                $http.get(req).success(function (data) {
+                    page.items = data;
+                    page[spinID] = data;
+                });
+            }
         });
     };
 
@@ -62,6 +74,6 @@ app.controller('PageController', ['$loader', '$http', function ($loader, $http) 
         var $image = angular.element('[ng-loadable="'+spinID+'"]'),
             oldSrc=$image.attr('src');
         $loader.imageSpin($image);
-        $image.attr("src",oldSrc.substring(0,oldSrc.length-1)+parseInt(oldSrc.substr(-1),10)+1);
+        $image.attr("src",oldSrc.substring(0,oldSrc.length-1)+(parseInt(oldSrc.substr(-1),10)+1));
     }
 }])

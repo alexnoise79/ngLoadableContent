@@ -19,6 +19,7 @@
 <body ng-loadable="body" options="{color:'#f60',radius:12}">
 
 <main ng-controller="PageController as page">
+
     <div id="wrapper">
 
         <div class="box" ng-loadable="graph" options="{color:'#5bc0de', radius:25, lines:13, length:1, width:9, trail:100, overlay:false, zIndex:5}">
@@ -39,14 +40,14 @@
             <span>FORM</span>
             <form class="inner" novalidate>
                 <div class="form-group">
-                    <label for="inputEmail3">Email address</label>
+                    <label for="inputEmail3">Email address <span class="valid" ng-show="page.email">✓</span></label>
                     <div ng-loadable="email"
                          options="{color:'#f0ad4e', radius:8, lines:7, length:0, width:8, shadow:false, left:'90%', zIndex:5}">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value="{{page.email[0]}}">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="Email" ng-model="page.name" ng-class="{valid: page.email, invalid: !page.email}">
                     </div>
                 </div>
             </form>
-            <button class="btn btn-warning" ng-click="page.req('email')">Check Email</button>
+            <button class="btn btn-warning" ng-click="page.req('email','/email', page.name)">Check Email</button>
         </div>
 
         <div class="box">
@@ -56,8 +57,11 @@
             </div>
             <button class="btn btn-success" ng-click="page.reloadImage('img1')">Reload Image</button>
         </div>
-
     </div>
+
+    <p class="warning">
+        Warning, this example use ngMock End to End [ngMockE2E] to emulate AJAX requests, so you will not see any call into the network panel.
+    </p>
 
     <div class="buttons">
         <button class="btn btn-primary" ng-click="page.req('body')">load me in the body</button>
