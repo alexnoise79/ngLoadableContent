@@ -37,19 +37,27 @@ angular.module('ngLoadableContent',[])
     .factory('httpInterceptor', ['$q', '$loader', function($q, $loader){
         return {
             'request': function(config){
-                config.headers.spinner=$loader.startSpin();//set the name of the spin
+                if ($loader.spinners.length > 0) {
+                    config.headers.spinner = $loader.startSpin();//set the name of the spin
+                }
                 return config || $q.when(config);
             },
             'response': function(response){
-                $loader.stopSpin(response.config.headers.spinner);
+                if ($loader.spinners.length > 0) {
+                    $loader.stopSpin(response.config.headers.spinner);
+                }
                 return response || $q.when(response);
             },
             'requestError': function(rejection){
-                $loader.stopSpin(rejection.config.headers.spinner);
+                if ($loader.spinners.length > 0) {
+                    $loader.stopSpin(rejection.config.headers.spinner);
+                }
                 return $q.reject(rejection);
             },
             'responseError': function(rejection){
-                $loader.stopSpin(rejection.config.headers.spinner);
+                if ($loader.spinners.length > 0) {
+                    $loader.stopSpin(rejection.config.headers.spinner);
+                }
                 return $q.reject(rejection);
             }
         };
