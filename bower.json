@@ -1,11 +1,13 @@
 {
   "name": "ngLoadableContent",
+  "private": false,
+  "main": "src/ngLoadableContent.js",
   "version": "1.0.1",
+  "description": "angular loadable content module",
   "authors": [
     "Alex Vitari <alexnoise79@gmail.com>"
   ],
-  "description": "angular loadable content module",
-  "main": "src/ngLoadableContent.js",
+  "repository": "https://github.com/alexnoise79/ngLoadableContent",
   "keywords": [
     "angular",
     "loadable",
@@ -15,7 +17,6 @@
     "loader"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/alexnoise79/ngLoadableContent",
   "ignore": [
     "**/.*",
     "node_modules",
