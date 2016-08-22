@@ -1,7 +1,9 @@
 {
   "name": "ngLoadableContent",
+  "private": false,
   "version": "1.0.1",
   "description": "angular definitive loadable content module",
+  "repository": "https://github.com/alexnoise79/ngLoadableContent",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
