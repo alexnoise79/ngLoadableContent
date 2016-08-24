@@ -84,7 +84,8 @@ angular.module('ngLoadableContent',[])
                 return currentSpinner;
             },
             "stopSpin": function(spinnerID){
-                if(this.spinners[spinnerID] && this.spinners[spinnerID].spinner.opts.overlay){
+                if(!this.spinners[spinnerID]) return;
+                if(this.spinners[spinnerID].spinner.opts.overlay){
                     var element=this.spinners[spinnerID].element;
 
                     element.removeClass('overlayed');
