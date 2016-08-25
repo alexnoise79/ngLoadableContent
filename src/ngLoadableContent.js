@@ -66,7 +66,7 @@ angular.module('ngLoadableContent',[])
         var currentSpinner='';
 
         return {
-            "spinners" : [],
+            "spinners" : {},
             "spinElement": function(element, cb){
                 if(this.spinners.hasOwnProperty(element)){
                     return false;
@@ -76,6 +76,10 @@ angular.module('ngLoadableContent',[])
                 }
             },
             "startSpin": function(){
+                if(!this.spinners[currentSpinner]){
+                    this.spinners = {};
+                    return "";
+                }
                 var $container=this.spinners[currentSpinner].element;
                 if(this.spinners[currentSpinner].spinner.opts.overlay){
                     $container.addClass('overlayed').prepend(angular.element('<div>',{'class':"overlay"}));
