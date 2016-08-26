@@ -1,3 +1,5 @@
+[![GitHub version](https://badge.fury.io/gh/https%3A%2F%2Fgithub.com%2Falexnoise79%2FngLoadableContent.svg)](https://github.com/alexnoise79/ngLoadableContent) [![Bower version](https://badge.fury.io/bo/angular-loadable-content.svg)](http://badge.fury.io/bo/angular-loadable-content)
+
 Angular Loadable Content Module
 ======================
 
