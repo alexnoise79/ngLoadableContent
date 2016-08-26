@@ -38,25 +38,25 @@ angular.module('ngLoadableContent',[])
         return {
             'request': function(config){
                 if (Object.keys($loader.spinners).length) {
-                    config.headers.spinner = $loader.startSpin();//set the name of the spin
+                    config.spinner = $loader.startSpin();//set the name of the spin
                 }
                 return config || $q.when(config);
             },
             'response': function(response){
                 if (Object.keys($loader.spinners).length) {
-                    $loader.stopSpin(response.config.headers.spinner);
+                    $loader.stopSpin(response.config.spinner);
                 }
                 return response || $q.when(response);
             },
             'requestError': function(rejection){
                 if (Object.keys($loader.spinners).length) {
-                    $loader.stopSpin(rejection.config.headers.spinner);
+                    $loader.stopSpin(rejection.config.spinner);
                 }
                 return $q.reject(rejection);
             },
             'responseError': function(rejection){
                 if (Object.keys($loader.spinners).length) {
-                    $loader.stopSpin(rejection.config.headers.spinner);
+                    $loader.stopSpin(rejection.config.spinner);
                 }
                 return $q.reject(rejection);
             }
