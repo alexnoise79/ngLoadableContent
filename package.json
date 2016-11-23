@@ -1,7 +1,7 @@
 {
-  "name": "ngLoadableContent",
+  "name": "ngloadablecontent",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "angular definitive loadable content module",
   "repository": "https://github.com/alexnoise79/ngLoadableContent",
   "main": "main.js",

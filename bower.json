@@ -2,7 +2,7 @@
   "name": "ngloadablecontent",
   "private": false,
   "main": "src/ngLoadableContent.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "angular loadable content module",
   "repository": "https://github.com/alexnoise79/ngFloatingLabels.git",
   "license": "MIT",

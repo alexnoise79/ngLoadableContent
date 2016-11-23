@@ -1,7 +1,7 @@
 /**
  * @author Alex Vitari.
  * @revision 02-12-2015
- * @update support img tag
+ * @update no-jquery, uglifyable
  */
 
 'use strict';
@@ -27,7 +27,7 @@ angular.module('ngLoadableContent',[])
 
         return {
             setDefault: function (conf) {
-                defaults = $.extend(defaults, conf);
+                defaults = angular.extend(defaults, conf);
             },
             $get: function () {
                 return  defaults;
@@ -62,7 +62,7 @@ angular.module('ngLoadableContent',[])
             }
         };
     }])
-    .service("$loader", ['$rootScope','$loaderConfig', function($rootScope, $loaderConfig){
+    .service('$loader', ['$rootScope','$loaderConfig', function($rootScope, $loaderConfig){
         var currentSpinner='';
 
         return {
@@ -104,7 +104,7 @@ angular.module('ngLoadableContent',[])
             },
             "setSpin": function($element, options){
                 currentSpinner = $element.attr("ng-loadable");
-                this.spinners[currentSpinner]={ element: $element, spinner: new window.Spinner($.extend(angular.copy($loaderConfig), options))};
+                this.spinners[currentSpinner]={ element: $element, spinner: new window.Spinner(angular.extend(angular.copy($loaderConfig), options))};
             },
             "imageSpin" : function($element, options){
                 var loader = this,
@@ -132,11 +132,12 @@ angular.module('ngLoadableContent',[])
         return {
             restrict: 'A',
             scope: {
-                options: '='
+                options: '=',
+                name: '@ngLoadable'
             },
-            controller: function($scope, $element, $attrs){
+            link: function($scope, $element, $attrs){
                 $scope.$on('loader.update', function(event, name){
-                    if(name === $attrs.ngLoadable){
+                    if(name === $scope.name){
                         $loader.setSpin($element, $scope.options);
                     }
                 });
